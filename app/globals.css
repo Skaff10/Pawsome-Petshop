@@ -1,11 +1,22 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-nunito: var(--font-nunito);
   --font-playfair: var(--font-playfair);
+}
+
+body {
+  background-color: var(--background);
+}
+
+:root {
+  --background: #f0ebd8;
+  --secondary: #9dbf9e;
+  --primary_accent: #e07b54;
+  --supporting: #5d9b80;
+  --text: #2c1a0e;
 }

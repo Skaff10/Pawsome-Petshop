@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
-import { Nunito, Playfair_Display } from "next/font/google";
+import { Nunito, Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
-import PromoTop from "@/components/promoTop";
+import PromoTop from "@/components/PromoTop";
+import Navbar from "@/components/Navbar";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -29,10 +33,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${nunito.variable} ${playfairDisplay.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", nunito.variable, playfairDisplay.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col">
         <PromoTop />
+        <Navbar />
         {children}
       </body>
     </html>

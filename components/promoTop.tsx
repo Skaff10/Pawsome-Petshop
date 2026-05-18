@@ -1,8 +1,8 @@
-const promoTop = () => {
+const PromoTop = () => {
   return (
-    <div className="flex items-center justify-between bg-[#9DBF9E]">
+    <div className="flex items-center justify-between h-7 bg-(--secondary)">
       <div></div>
-      <h1 className="font-extrabold text-center text-[#F0EBD8] font-nunito py-2 text-xs md:text-sm">
+      <h1 className="font-extrabold text-center text-text py-2 font-nunito text-[0.55rem]">
         GET IT FAST!! <br />
         With free delivery on orders $39+
       </h1>
@@ -11,4 +11,4 @@ const promoTop = () => {
   );
 };
 
-export default promoTop;
+export default PromoTop;
