@@ -1,12 +1,14 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-nunito: var(--font-nunito);
   --font-playfair: var(--font-playfair);
+  --color-cream: #F0EBD8;
+  --color-sage: #9DBF9E;
+  --color-terracotta: #E07B54;
+  --color-teal: #5D9B80;
+  --color-espresso: #2C1A0E;
 }
 
 body {

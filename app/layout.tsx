@@ -3,6 +3,8 @@ import { Nunito, Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
 import PromoTop from "@/components/PromoTop";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { CartProvider } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -36,9 +38,14 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", nunito.variable, playfairDisplay.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <PromoTop />
-        <Navbar />
-        {children}
+        <CartProvider>
+          <PromoTop />
+          <Navbar />
+          <main className="flex-1 flex flex-col">
+            {children}
+          </main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
