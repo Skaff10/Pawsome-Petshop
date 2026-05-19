@@ -5,6 +5,7 @@ import PromoTop from "@/components/PromoTop";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
+import { ToastRenderer } from "@/components/ToastRenderer";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -45,6 +46,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <ToastRenderer />
         </CartProvider>
       </body>
     </html>

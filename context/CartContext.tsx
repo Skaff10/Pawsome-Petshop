@@ -16,6 +16,9 @@ interface CartContextType {
   clearCart: () => void;
   totalItems: number;
   totalPrice: number;
+  toast: { message: string; visible: boolean };
+  showToast: (message: string) => void;
+  hideToast: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -23,6 +26,15 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [toast, setToast] = useState({ message: "", visible: false });
+
+  const showToast = (message: string) => {
+    setToast({ message, visible: true });
+  };
+
+  const hideToast = () => {
+    setToast((prev) => ({ ...prev, visible: false }));
+  };
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -44,7 +56,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [cartItems, isLoaded]);
 
-  const addToCart = (product: Product, qty: number) => {
+  const addToCart = (product: Product, qty: number = 1) => {
     setCartItems((prev) => {
       const existingItem = prev.find((item) => item.product.id === product.id);
       if (existingItem) {
@@ -56,6 +68,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       }
       return [...prev, { product, quantity: qty }];
     });
+    showToast(`${product.name} added to cart!`);
   };
 
   const removeFromCart = (id: string) => {
@@ -94,6 +107,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         clearCart,
         totalItems,
         totalPrice,
+        toast,
+        showToast,
+        hideToast,
       }}
     >
       {children}

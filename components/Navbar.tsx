@@ -1,10 +1,14 @@
+"use client";
+
 import logo from "@/public/logo.svg";
 import logoText from "@/public/text.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, ShoppingBag, Menu } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const Navbar = () => {
+  const { totalItems } = useCart();
   const navItems = [
     { label: "Dog", href: "/store?pet=dog" },
     { label: "Cat", href: "/store?pet=cat" },
@@ -60,11 +64,16 @@ const Navbar = () => {
         </div>
 
         {/* Cart */}
-        <button aria-label="Cart" className="p-2 -mr-2 relative">
-          <Link href="/cart">
+        <div className="relative p-2 -mr-2">
+          <Link href="/cart" aria-label="Cart">
             <ShoppingBag className="w-6 h-6 md:w-7 md:h-7 text-gray-700" />
+            {totalItems > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-[#E07B54] text-white text-[10px] font-bold font-[var(--font-nunito)] leading-none px-1">
+                {totalItems > 99 ? "99+" : totalItems}
+              </span>
+            )}
           </Link>
-        </button>
+        </div>
       </div>
     </nav>
   );
