@@ -25,7 +25,7 @@ export default function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <div className="bg-cream rounded-2xl shadow-sm shadow-espresso/10 p-4 relative flex flex-col h-full border border-espresso/5 transition-all hover:scale-[1.02] hover:shadow-md hover:border-teal/30">
+    <div className="bg-cream rounded-2xl shadow-sm shadow-espresso/10 p-4 relative flex flex-col h-full w-full border border-espresso/5 transition-all hover:scale-[1.02] hover:shadow-md hover:border-teal/30">
       {product.badge && (
         <span
           className={`absolute top-4 left-4 z-10 px-3 py-1 rounded-full text-xs font-nunito font-bold uppercase tracking-wider ${getBadgeColor(

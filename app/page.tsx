@@ -3,27 +3,32 @@ import heroMobile from "@/public/hero_mobile.svg";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import Image from "next/image";
 import Link from "next/link";
+import BestSellers from "@/components/BestSellers";
+import WhyShopWithUs from "@/components/WhyShopWithUs";
+import NewArrivals from "@/components/NewArrivals";
+import Testimonials from "@/components/Testimonials";
+import NewsletterBanner from "@/components/NewsletterBanner";
 
+import banner1 from "@/public/deliveryimage1.svg";
+import banner2 from "@/public/factimage2.svg";
+import banner1mobile from "@/public/deliveryimagemobile.svg";
 const pets = [
   { name: "Cats", id: "cat", src: "/cat.svg" },
   { name: "Dogs", id: "dog", src: "/dog.svg" },
-  { name: "Fish", id: "fish", src: "/fish.svg" },
-  { name: "Hamsters", id: "ham", src: "/ham.svg" },
-  { name: "Birds", id: "bird", src: "/bird.svg" },
-  { name: "Turtles", id: "turtle", src: "/turtle.svg" },
+  { name: "Small Pets", id: "ham", src: "/ham.svg" },
 ];
 
 const Page = () => {
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="w-full">
       <ImagePlaceholder image1={heroMobile} image2={hero} alt="hero" />
 
-      <section className="py-16 px-6 max-w-7xl mx-auto w-full flex-1">
+      <section className="py-16 px-6 max-w-7xl mx-auto w-full">
         <h2 className="font-playfair text-3xl md:text-4xl text-espresso font-bold text-center mb-10">
-          Shop by Pet
+          Search by Shop
         </h2>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+
+        <div className="flex justify-around">
           {pets.map((pet) => (
             <Link
               key={pet.id}
@@ -44,6 +49,19 @@ const Page = () => {
           ))}
         </div>
       </section>
+      <BestSellers />
+
+      {/* Full Width Banner 1 */}
+      <ImagePlaceholder image1={banner1} image2={banner1mobile} alt="hero" />
+
+      <NewArrivals />
+
+      {/* Full Width Banner 2 */}
+      <ImagePlaceholder image1={banner2} image2={banner1mobile} alt="hero" />
+
+      <WhyShopWithUs />
+      <Testimonials />
+      <NewsletterBanner />
     </div>
   );
 };

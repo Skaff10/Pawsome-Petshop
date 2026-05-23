@@ -10,8 +10,8 @@ import { useCart } from "@/context/CartContext";
 const Navbar = () => {
   const { totalItems } = useCart();
   const navItems = [
-    { label: "Dog", href: "/store?pet=dog" },
-    { label: "Cat", href: "/store?pet=cat" },
+    { label: "Dogs", href: "/store?pet=dog" },
+    { label: "Cats", href: "/store?pet=cat" },
     { label: "Store", href: "/store" },
     { label: "Pawsome Picks", href: "/store" },
   ];
@@ -31,7 +31,7 @@ const Navbar = () => {
           href="/"
           className="flex flex-col p-1 gap-1 items-center md:items-start"
         >
-          <Image src={logo} alt="logo" className="w-16 md:w-20" />
+          <Image src={logo} alt="logo" className="w-16 md:w-20 ml-3 " />
           <Image src={logoText} alt="logoText" className="w-20 md:w-28" />
         </Link>
       </div>

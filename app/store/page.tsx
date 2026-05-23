@@ -9,16 +9,13 @@ const PET_CATEGORIES = [
   { id: "all", label: "All" },
   { id: "cat", label: "Cats" },
   { id: "dog", label: "Dogs" },
-  { id: "fish", label: "Fish" },
-  { id: "bird", label: "Birds" },
-  { id: "ham", label: "Hamsters" },
-  { id: "turtle", label: "Turtles" },
+  { id: "small-pet", label: "Small Pets" },
 ];
 
 function StoreContent() {
   const searchParams = useSearchParams();
   const petParam = searchParams.get("pet");
-  
+
   const [activeFilter, setActiveFilter] = useState("all");
 
   useEffect(() => {
