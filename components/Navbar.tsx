@@ -68,7 +68,7 @@ const Navbar = () => {
           <Link href="/cart" aria-label="Cart">
             <ShoppingBag className="w-6 h-6 md:w-7 md:h-7 text-gray-700" />
             {totalItems > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-[#E07B54] text-white text-[10px] font-bold font-[var(--font-nunito)] leading-none px-1">
+              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-terracotta text-white text-[10px] font-(--font-nunito) leading-none px-1">
                 {totalItems > 99 ? "99+" : totalItems}
               </span>
             )}
