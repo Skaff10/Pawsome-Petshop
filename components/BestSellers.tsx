@@ -19,7 +19,7 @@ export default function BestSellers() {
         </h2>
         
         {/* Horizontally scrollable container */}
-        <div className="flex overflow-x-auto gap-20 pb-8 snap-x snap-mandatory scrollbar-hide items-stretch">
+        <div className="flex mx-6 overflow-x-auto gap-20 pb-8 snap-x snap-mandatory scrollbar-hide items-stretch">
           {bestSellers.map((product) => (
             <div 
               key={product.id} 

@@ -11,7 +11,8 @@ import NewsletterBanner from "@/components/NewsletterBanner";
 
 import banner1 from "@/public/deliveryimage1.svg";
 import banner2 from "@/public/factimage2.svg";
-import banner1mobile from "@/public/deliveryimagemobile.svg";
+import banner1mobile from "@/public/deliveryimage_mobilev2.svg";
+import banner2mobile from "@/public/factimage_mobile.svg";
 const pets = [
   { name: "Cats", id: "cat", src: "/cat.svg" },
   { name: "Dogs", id: "dog", src: "/dog.svg" },
@@ -23,7 +24,7 @@ const Page = () => {
     <div className="w-full">
       <ImagePlaceholder image1={heroMobile} image2={hero} alt="hero" />
 
-      <section className="py-16 px-6 max-w-7xl mx-auto w-full">
+      <section className="pt-16 px-6 max-w-7xl mx-auto w-full">
         <h2 className="font-playfair text-3xl md:text-4xl text-espresso font-bold text-center mb-10">
           Search by Shop
         </h2>
@@ -50,15 +51,11 @@ const Page = () => {
         </div>
       </section>
       <BestSellers />
-
       {/* Full Width Banner 1 */}
-      <ImagePlaceholder image1={banner1} image2={banner1mobile} alt="hero" />
-
+      <ImagePlaceholder image1={banner1mobile} image2={banner1} alt="hero" />
       <NewArrivals />
-
       {/* Full Width Banner 2 */}
-      <ImagePlaceholder image1={banner2} image2={banner1mobile} alt="hero" />
-
+      <ImagePlaceholder image1={banner2mobile} image2={banner2} alt="hero" />
       <WhyShopWithUs />
       <Testimonials />
       <NewsletterBanner />

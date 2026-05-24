@@ -20,8 +20,8 @@ export default function NewArrivals() {
           New Arrivals
         </h2>
         
-        {/* Horizontally scrollable container */}
-        <div className="flex overflow-x-auto gap-20 pb-8 snap-x snap-mandatory scrollbar-hide items-stretch">
+        {/* Horizontally scrollable conainer */}
+        <div className="flex mx-6  overflow-x-auto gap-20 pb-8 snap-x snap-mandatory scrollbar-hide items-center ">
           {newArrivals.map((product) => (
             <div 
               key={product.id} 
