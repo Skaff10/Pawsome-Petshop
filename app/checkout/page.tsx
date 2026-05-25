@@ -5,6 +5,30 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 
+const InputField = ({ label, name, type = "text", value, onChange, error, onFocus, onBlur }: any) => (
+  <div className="flex flex-col mb-4">
+    <label className="font-nunito text-espresso text-sm font-semibold mb-1">
+      {label}
+    </label>
+    <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      className={`border p-3 rounded-lg font-nunito outline-none transition-colors ${
+        error ? "border-terracotta" : "border-espresso/20 focus:border-teal"
+      }`}
+    />
+    {error && (
+      <span className="text-terracotta text-xs mt-1 font-nunito">
+        {error}
+      </span>
+    )}
+  </div>
+);
+
 export default function CheckoutPage() {
   const router = useRouter();
   const { cartItems, totalPrice, clearCart } = useCart();
@@ -77,35 +101,6 @@ export default function CheckoutPage() {
     );
   }
 
-  const InputField = ({ label, name, type = "text", onBlur }: any) => (
-    <div className="flex flex-col mb-4">
-      <label className="font-nunito text-espresso text-sm font-semibold mb-1">
-        {label}
-      </label>
-      <input
-        type={type}
-        name={name}
-        value={name === "cardNumber" ? getDisplayCardNumber() : (formData as any)[name]}
-        onChange={handleChange}
-        onFocus={() => {
-          if (name === "cardNumber") setIsCardBlurred(false);
-        }}
-        onBlur={(e) => {
-          if (name === "cardNumber") setIsCardBlurred(true);
-          if (onBlur) onBlur(e);
-        }}
-        className={`border p-3 rounded-lg font-nunito outline-none transition-colors ${
-          errors[name] ? "border-terracotta" : "border-espresso/20 focus:border-teal"
-        }`}
-      />
-      {errors[name] && (
-        <span className="text-terracotta text-xs mt-1 font-nunito">
-          {errors[name]}
-        </span>
-      )}
-    </div>
-  );
-
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 w-full flex-1">
       <h1 className="font-playfair text-4xl text-espresso font-bold mb-8">
@@ -121,10 +116,10 @@ export default function CheckoutPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
               <div className="md:col-span-2">
-                <InputField label="Full Name" name="fullName" />
+                <InputField label="Full Name" name="fullName" value={formData.fullName} onChange={handleChange} error={errors.fullName} />
               </div>
-              <InputField label="Email Address" name="email" type="email" />
-              <InputField label="Phone Number" name="phone" type="tel" />
+              <InputField label="Email Address" name="email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
+              <InputField label="Phone Number" name="phone" type="tel" value={formData.phone} onChange={handleChange} error={errors.phone} />
             </div>
 
             <h2 className="font-playfair text-2xl font-bold text-espresso mt-8 mb-6">
@@ -132,11 +127,11 @@ export default function CheckoutPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
               <div className="md:col-span-2">
-                <InputField label="Street Address" name="street" />
+                <InputField label="Street Address" name="street" value={formData.street} onChange={handleChange} error={errors.street} />
               </div>
-              <InputField label="City" name="city" />
-              <InputField label="Country" name="country" />
-              <InputField label="Postal Code" name="postalCode" />
+              <InputField label="City" name="city" value={formData.city} onChange={handleChange} error={errors.city} />
+              <InputField label="Country" name="country" value={formData.country} onChange={handleChange} error={errors.country} />
+              <InputField label="Postal Code" name="postalCode" value={formData.postalCode} onChange={handleChange} error={errors.postalCode} />
             </div>
 
             <h2 className="font-playfair text-2xl font-bold text-espresso mt-8 mb-6">
@@ -144,17 +139,25 @@ export default function CheckoutPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
               <div className="md:col-span-2">
-                <InputField label="Card Number" name="cardNumber" />
+                <InputField
+                  label="Card Number"
+                  name="cardNumber"
+                  value={getDisplayCardNumber()}
+                  onChange={handleChange}
+                  error={errors.cardNumber}
+                  onFocus={() => setIsCardBlurred(false)}
+                  onBlur={() => setIsCardBlurred(true)}
+                />
               </div>
-              <InputField label="Expiry (MM/YY)" name="expiry" />
-              <InputField label="CVV" name="cvv" type="password" />
+              <InputField label="Expiry (MM/YY)" name="expiry" value={formData.expiry} onChange={handleChange} error={errors.expiry} />
+              <InputField label="CVV" name="cvv" type="password" value={formData.cvv} onChange={handleChange} error={errors.cvv} />
             </div>
           </form>
         </div>
 
         {/* Order Summary Column */}
         <div className="lg:w-[400px] shrink-0">
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-espresso/5 sticky top-6">
+          <div className="rounded-2xl p-6 shadow-sm border border-espresso/5 sticky top-6">
             <h2 className="font-playfair text-2xl font-bold text-espresso mb-6 border-b border-espresso/10 pb-4">
               Order Summary
             </h2>
