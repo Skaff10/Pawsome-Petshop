@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito, Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
-import PromoTop from "@/components/PromoTop";
+import PromoTop from "@/components/promoTop";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
